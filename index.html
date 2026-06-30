@@ -3,182 +3,1291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lex Ursus | Estudio Jurídico</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <title>Lex Ursus | Estudio Jurídico Premium</title>
+    <!-- Fuentes de alta gama para tono corporativo y academico -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #121212;
+            --bg-card: #181818;
+            --gold: #c5a85c;
+            --gold-light: #e2c98a;
+            --gold-dark: #967938;
+            --text-main: #f0f0f0;
+            --text-muted: #a0a0a0;
+            --white: #ffffff;
+            --whatsapp-color: #25d366;
+            --font-title: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-subtitle {
+            color: var(--gold);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2.8rem;
+            color: var(--white);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: #000;
+            border: 1px solid var(--gold);
+        }
+
+        .btn-gold:hover {
+            background-color: transparent;
+            color: var(--gold);
+            box-shadow: 0 0 20px rgba(197, 168, 92, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp-large {
+            background-color: var(--whatsapp-color);
+            color: var(--white);
+            border: 1px solid var(--whatsapp-color);
+            font-weight: 700;
+        }
+
+        .btn-whatsapp-large:hover {
+            background-color: #20ba5a;
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 40px 30px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 2px rgba(197, 168, 92, 0.2);
+            border-color: rgba(197, 168, 92, 0.15);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        nav.scrolled {
+            padding: 12px 0;
+            background-color: rgba(5, 5, 5, 0.98);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(197, 168, 92, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: var(--font-title);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-brand span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--gold);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            /* Degradado sofisticado de izquierda a derecha sobre imagen.png para garantizar legibilidad */
+            background: linear-gradient(to right, rgba(10, 10, 10, 0.98) 35%, rgba(10, 10, 10, 0.60) 65%, rgba(10, 10, 10, 0.20)), 
+                        url('imagen.png') center right / cover no-repeat;
+            padding-top: 100px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            z-index: 2;
+            text-align: left;
+        }
+
+        .hero-badge {
+            background-color: rgba(197, 168, 92, 0.1);
+            border: 1px solid rgba(197, 168, 92, 0.3);
+            color: var(--gold-light);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-title);
+            font-size: 4.2rem;
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--gold);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, var(--bg-primary), transparent);
+            z-index: 1;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: var(--font-title);
+            font-size: 2.2rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 24px;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 35px;
+        }
+
+        .highlight-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .highlight-icon {
+            color: var(--gold);
+            font-size: 1.3rem;
+            background-color: rgba(197, 168, 92, 0.08);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .highlight-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+
+        .highlight-content p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        .about-interactive-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .interactive-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid rgba(255,255,255,0.02);
+            border-radius: 8px;
+            padding: 30px;
+            transition: var(--transition);
+            border-left: 3px solid var(--gold);
+        }
+
+        .interactive-card:hover {
+            background-color: var(--bg-card);
+            border-left-color: var(--gold-light);
+            transform: translateX(5px);
+        }
+
+        .interactive-card h4 {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .interactive-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            text-align: left;
+        }
+
+        .service-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(197, 168, 92, 0.05);
+            border: 1px solid rgba(197, 168, 92, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .service-icon-wrapper i {
+            font-size: 2rem;
+            color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 15px;
+            transition: var(--transition);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card:hover .service-icon-wrapper {
+            background-color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .service-card:hover .service-icon-wrapper i {
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        .service-card:hover h3 {
+            color: var(--gold);
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .service-link:hover {
+            color: var(--gold-light);
+            gap: 12px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .team-card {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
+            border: 2px solid rgba(197, 168, 92, 0.2);
+            border-radius: 50%;
+            margin: 0 auto 25px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 2.5rem;
+            color: var(--gold);
+        }
+
+        .team-card h3 {
+            font-family: var(--font-title);
+            font-size: 1.35rem;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .team-card:hover .team-avatar {
+            border-color: var(--gold);
+            background: var(--gold);
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .legal-wrapper {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 50px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .legal-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
+        }
+
+        .legal-item:last-child {
+            border-bottom: none;
+        }
+
+        .legal-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .legal-value {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-weight: 400;
+        }
+
+        .contacto-split {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-form-wrapper {
+            background-color: var(--bg-secondary);
+            padding: 50px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-control {
+            width: 100%;
+            background-color: var(--bg-primary);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            padding: 16px;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(197, 168, 92, 0.1);
+        }
+
+        textarea.form-control {
+            resize: none;
+        }
+
+        .info-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .info-block-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .info-block-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(197, 168, 92, 0.05);
+            border: 1px solid rgba(197, 168, 92, 0.2);
+            color: var(--gold);
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-block-details h4 {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .info-block-details p, .info-block-details a {
+            color: var(--text-muted);
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .info-block-details a:hover {
+            color: var(--gold);
+        }
+
+        .social-large-box h4 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .social-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            color: #000;
+            background-color: var(--gold);
+            border-color: var(--gold);
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(197, 168, 92, 0.4);
+        }
+
+        .social-btn.fb:hover {
+            background-color: #1877f2;
+            border-color: #1877f2;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(24, 119, 242, 0.4);
+        }
+
+        .social-btn.ig:hover {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 0 15px rgba(214, 36, 159, 0.4);
+        }
+
+        .social-btn.wa:hover {
+            background-color: var(--whatsapp-color);
+            border-color: var(--whatsapp-color);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+        }
+
+        footer {
+            background-color: #050505;
+            padding: 60px 0 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding-bottom: 40px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            background-color: var(--whatsapp-color);
+            color: var(--white);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.1rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 10px rgba(37, 211, 102, 0.3);
+            z-index: 999;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        /* Efecto de anillo de pulso flotante */
+        .whatsapp-float::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--whatsapp-color);
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            animation: pulse-ring 1.8s infinite;
+            pointer-events: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-5px);
+            background-color: #20ba5a;
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.95);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                background: linear-gradient(to top, rgba(10, 10, 10, 0.95) 60%, rgba(10, 10, 10, 0.6)), 
+                            url('imagen.png') center center / cover no-repeat;
+            }
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .hero-actions {
+                justify-content: center;
+            }
+            .about-grid, .contacto-split {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .legal-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 0;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-secondary);
+                padding: 30px;
+                border-bottom: 2px solid var(--gold-dark);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .contact-form-wrapper {
+                padding: 30px 20px;
+            }
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <nav id="navbar">
-        <div class="nav-brand">
-            <i class="fa-solid fa-scale-balanced"></i> LEX URSUS
-        </div>
-        <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#equipo">Equipo</a></li>
-            <li><a href="#servicios">Servicios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
-        <div class="menu-toggle" id="mobile-menu">
-            <i class="fa-solid fa-bars"></i>
+        <div class="container nav-container">
+            <a href="#inicio" class="nav-brand">
+                <i class="fa-solid fa-scale-balanced"></i> LEX <span>URSUS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Especialidades</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+                <li><a href="#info-legal">Transparencia</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
         </div>
     </nav>
 
     <header id="inicio" class="hero">
-        <div class="hero-content">
-            <div class="logo-simulado">
-                <i class="fa-solid fa-paw logo-oso"></i>
-                <i class="fa-solid fa-scale-balanced logo-balanza"></i>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-circle-check"></i> Consultoría Jurídica Integral
+                </div>
+                <h1>Defensa Firme, <span>Justicia Sólida</span></h1>
+                <p>Salvaguardamos la seguridad, el patrimonio y la estabilidad de las familias y organizaciones con absoluta integridad, ética y el máximo nivel de rigor técnico.</p>
+                
+                <div class="hero-actions">
+                    <a href="#contacto" class="btn btn-gold">
+                        <i class="fa-regular fa-envelope"></i> Iniciar Consulta
+                    </a>
+                    <!-- Enlace directo con tu numero real y mensaje personalizado predeterminado -->
+                    <a href="https://wa.me/51900000000?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Lex%20Ursus%20y%20deseo%20solicitar%20orientaci%C3%B3n%20jur%C3%ADdica." 
+                       target="_blank" 
+                       class="btn btn-whatsapp-large">
+                        <i class="fa-brands fa-whatsapp"></i> Solicitar Orientación
+                    </a>
+                </div>
             </div>
-            <h1>Lex Ursus</h1>
-            <h2>Defensa sólida, justicia firme</h2>
-            <a href="#contacto" class="btn-cta">Contáctanos</a>
         </div>
     </header>
 
     <section id="nosotros" class="section">
         <div class="container">
-            <h2 class="section-title">Sobre Nosotros</h2>
-            <p class="section-desc">Somos una <strong>Sociedad Jurídica S.A.C.</strong> especializada en brindar asesoría legal integral con un enfoque primordial en el Derecho de Familia. Protegemos los intereses de nuestros clientes con integridad, discreción y firmeza.</p>
+            <div class="about-grid">
+                <div class="about-text">
+                    <span class="section-subtitle">Nuestra Identidad</span>
+                    <h3>Comprometidos con el Éxito Legal</h3>
+                    <p>En <strong>Lex Ursus Sociedad Jurídica S.A.C.</strong>, nos especializamos en brindar asesoría legal integral con enfoque preventivo y litigante. Entendemos que cada situación jurídica demanda discreción absoluta, estrategias meticulosas y una firmeza inquebrantable en la defensa de los derechos constitucionales.</p>
+                    
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                            <div class="highlight-content">
+                                <h4>Protección y Confidencialidad</h4>
+                                <p>Soportamos nuestras consultas en el secreto profesional estricto y el resguardo de tus activos e intereses.</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon"><i class="fa-solid fa-gavel"></i></div>
+                            <div class="highlight-content">
+                                <h4>Experiencia Litigante</h4>
+                                <p>Afrontamos controversias con un riguroso análisis preventivo y una contundente presencia judicial.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-interactive-cards">
+                    <div class="interactive-card">
+                        <h4><i class="fa-solid fa-compass"></i> Misión</h4>
+                        <p>Asegurar soluciones jurídicas eficaces y personalizadas. Convertimos el conocimiento técnico en un escudo protector y estratégico para salvaguardar los intereses de nuestros clientes bajo estrictos estándares éticos.</p>
+                    </div>
+                    <div class="interactive-card">
+                        <h4><i class="fa-solid fa-eye"></i> Visión</h4>
+                        <p>Consolidarnos como el estudio jurídico líder y de referencia nacional en Derecho de Familia y Defensa Corporativa Integral, destacando por nuestra solvencia moral, innovación estratégica y resultados ejemplares.</p>
+                    </div>
+                    <div class="interactive-card">
+                        <h4><i class="fa-solid fa-gem"></i> Valores Clave</h4>
+                        <p>Nuestra práctica profesional se rige bajo HTML5 pilares inamovibles: Transparencia total, Lealtad incondicional, Rigor analítico, Empatía humana y una Disciplina defensiva implacable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="section" style="background-color: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Áreas de Especialidad</span>
+                <h2 class="section-title">Nuestras Soluciones Jurídicas</h2>
+            </div>
             
-            <div class="grid-3">
-                <div class="card basic-card">
-                    <h3>Misión</h3>
-                    <p>Proporcionar defensa legal sólida y asesoría estratégica, garantizando la protección de los derechos de nuestros clientes con ética y compromiso.</p>
-                </div>
-                <div class="card basic-card">
-                    <h3>Visión</h3>
-                    <p>Ser el estudio jurídico de referencia a nivel nacional en Derecho de Familia y asesoría corporativa integral, reconocidos por nuestra excelencia.</p>
-                </div>
-                <div class="card basic-card">
-                    <h3>Valores</h3>
-                    <p>Lealtad, confidencialidad, justicia, firmeza y excelencia profesional.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="equipo" class="section bg-darker">
-        <div class="container">
-            <h2 class="section-title">Nuestro Equipo</h2>
-            <div class="grid-equipo">
-                <div class="card team-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-user-tie"></i></div>
-                    <h3>Eric Guevara Vasquez</h3>
-                    <p class="role">Socio Fundador</p>
-                    <p class="bio">Especialista en litigios complejos y estrategias legales de alta precisión.</p>
-                </div>
-                <div class="card team-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-user-tie"></i></div>
-                    <h3>Farid Aro Quispe</h3>
-                    <p class="role">Socio Principal</p>
-                    <p class="bio">Experto en resolución de conflictos y Derecho de Familia.</p>
-                </div>
-                <div class="card team-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-user-tie"></i></div>
-                    <h3>Jhojan Chilon Carrasco</h3>
-                    <p class="role">Socio Corporativo</p>
-                    <p class="bio">Asesoría integral y pf llanificación legal para sociedades y patrimonios.</p>
-                </div>
-                <div class="card team-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-user-tie"></i></div>
-                    <h3>Andre Castillo Infante</h3>
-                    <p class="role">Socio Litigante</p>
-                    <p class="bio">Representación judicial con amplia experiencia en tribunales.</p>
-                </div>
-                <div class="card team-card">
-                    <div class="icon-wrapper"><i class="fa-solid fa-user-tie"></i></div>
-                    <h3>Avdel Chicana</h3>
-                    <p class="role">Socio Consultor</p>
-                    <p class="bio">Análisis jurídico profundo y asesoramiento preventivo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="servicios" class="section">
-        <div class="container">
-            <h2 class="section-title">Nuestros Servicios</h2>
-            <div class="grid-3">
+            <div class="services-grid">
+                <!-- Servicio 1 -->
                 <div class="card service-card">
-                    <i class="fa-solid fa-users-line service-icon"></i>
+                    <div class="service-icon-wrapper">
+                        <i class="fa-solid fa-users-line"></i>
+                    </div>
                     <h3>Derecho de Familia</h3>
-                    <p>Divorcios, pensiones de alimentos, tenencia, régimen de visitas y patrimonio familiar.</p>
+                    <p>Ofrecemos acompañamiento y defensa en divorcios, alimentos, tenencia compartida, regímenes de visitas y liquidación de sociedad de gananciales con la sensibilidad que tu caso requiere.</p>
+                    <a href="https://wa.me/51900000000?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Lex%20Ursus%20y%20deseo%20solicitar%20orientaci%C3%B3n%20jur%C3%ADdica%20sobre%20Derecho%20de%20Familia." target="_blank" class="service-link">Consultar Especialista <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
+
+                <!-- Servicio 2 -->
                 <div class="card service-card">
-                    <i class="fa-solid fa-briefcase service-icon"></i>
-                    <h3>Asesoría Legal Integral</h3>
-                    <p>Consultoría preventiva, revisión de contratos y estructuración legal para personas y empresas.</p>
+                    <div class="service-icon-wrapper">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </div>
+                    <h3>Asesoría Corporativa</h3>
+                    <p>Orientación para sociedades comerciales (MYPEs y Grandes Empresas). Incluye constitución de empresas, auditorías preventivas, cumplimiento regulatorio y contratos comerciales blindados.</p>
+                    <a href="https://wa.me/51900000000?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Lex%20Ursus%20y%20deseo%20solicitar%20orientaci%C3%B3n%20jur%C3%ADdica%20sobre%20Asesor%C3%ADa%20Corporativa." target="_blank" class="service-link">Consultar Especialista <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
+
+                <!-- Servicio 3 -->
                 <div class="card service-card">
-                    <i class="fa-solid fa-gavel service-icon"></i>
-                    <h3>Representación Judicial</h3>
-                    <p>Defensa activa en procesos judiciales civiles y de familia, garantizando el debido proceso.</p>
+                    <div class="service-icon-wrapper">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3>Patrocinio y Litigios</h3>
+                    <p>Representación judicial de alto nivel en tribunales civiles, constitucionales y administrativos. Rigurosa defensa técnica penal frente a riesgos financieros y familiares.</p>
+                    <a href="https://wa.me/51900000000?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Lex%20Ursus%20y%20deseo%20solicitar%20orientaci%C3%B3n%20jur%C3%ADdica%20sobre%20Patrocinio%20y%20Litigios." target="_blank" class="service-link">Consultar Especialista <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="info-legal" class="section bg-darker">
+    <section id="equipo" class="section">
         <div class="container">
-            <h2 class="section-title">Información Legal</h2>
-            <div class="legal-box">
-                <ul>
-                    <li><strong>Razón Social:</strong> Lex Ursus Sociedad Jurídica S.A.C.</li>
-                    <li><strong>RUC:</strong> 20614587231</li>
-                    <li><strong>Régimen:</strong> MYPE Tributario</li>
-                    <li><strong>Libros Contables:</strong> Libro Diario, Registro de Compras, Registro de Ventas</li>
-                    <li><strong>Estado Municipal:</strong> Licencia de funcionamiento en trámite</li>
-                </ul>
+            <div class="section-header">
+                <span class="section-subtitle">Sólida Formación</span>
+                <h2 class="section-title">El Cuerpo de Socios</h2>
+            </div>
+
+            <div class="team-grid">
+                <!-- Socio 1 -->
+                <div class="card team-card">
+                    <div class="team-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3>Eric Guevara</h3>
+                    <p class="team-role">Socio Fundador</p>
+                    <p class="bio">Lidera el diseño estratégico del estudio y el área de litigios de alta complejidad.</p>
+                </div>
+                <!-- Socio 2 -->
+                <div class="card team-card">
+                    <div class="team-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3>Farid Aro</h3>
+                    <p class="team-role">Socio Principal</p>
+                    <p class="bio">Director del área de Derecho de Familia, mediaciones patrimoniales y divorcios.</p>
+                </div>
+                <!-- Socio 3 -->
+                <div class="card team-card">
+                    <div class="team-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3>Jhojan Chilon</h3>
+                    <p class="team-role">Socio Corporativo</p>
+                    <p class="bio">Especialista en estructuración societaria, contratos y blindaje empresarial.</p>
+                </div>
+                <!-- Socio 4 -->
+                <div class="card team-card">
+                    <div class="team-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3>Andre Castillo</h3>
+                    <p class="team-role">Socio Litigante</p>
+                    <p class="bio">Defensa judicial combativa y litigación oral ante juzgados e instancias de apelación.</p>
+                </div>
+                <!-- Socio 5 -->
+                <div class="card team-card">
+                    <div class="team-avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <h3>Avdel Chicana</h3>
+                    <p class="team-role">Socio Consultor</p>
+                    <p class="bio">Encargado del análisis técnico de riesgos normativos y consultoría civil preventiva.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="info-legal" class="section" style="background-color: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Seguridad Contable y Legal</span>
+                <h2 class="section-title">Marco de Transparencia</h2>
+            </div>
+            
+            <div class="legal-wrapper">
+                <div class="legal-grid">
+                    <div class="legal-item">
+                        <span class="legal-label">Razón Social</span>
+                        <div class="legal-value">Lex Ursus Sociedad Jurídica S.A.C.</div>
+                    </div>
+                    <div class="legal-item">
+                        <span class="legal-label">Registro Único de Contribuyente (RUC)</span>
+                        <div class="legal-value">20614587231</div>
+                    </div>
+                    <div class="legal-item">
+                        <span class="legal-label">Régimen Tributario Activo</span>
+                        <div class="legal-value">Régimen MYPE Tributario</div>
+                    </div>
+                    <div class="legal-item">
+                        <span class="legal-label">Libros Contables Vigentes</span>
+                        <div class="legal-value">Libro Diario, Registro de Compras, Registro de Ventas</div>
+                    </div>
+                    <div class="legal-item">
+                        <span class="legal-label">Licencia de Funcionamiento</span>
+                        <div class="legal-value">En Trámite de Autorización Municipal</div>
+                    </div>
+                    <div class="legal-item">
+                        <span class="legal-label">Cobertura de Atención</span>
+                        <div class="legal-value">Lima Metropolitana (Conexiones a Provincias)</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="contacto" class="section">
-        <div class="container flex-contacto">
-            <div class="contacto-form">
-                <h2 class="section-title text-left">Contáctanos</h2>
-                <form id="contactForm">
-                    <div class="input-group">
-                        <input type="text" id="nombre" placeholder="Nombre completo" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" id="correo" placeholder="Correo electrónico" required>
-                    </div>
-                    <div class="input-group">
-                        <textarea id="mensaje" rows="5" placeholder="Escribe tu mensaje o consulta..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Enviar Mensaje</button>
-                </form>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Atención Inmediata</span>
+                <h2 class="section-title">Establece Contacto</h2>
             </div>
-            <div class="contacto-info">
-                <h3>Ubicación y Canales</h3>
-                <p><i class="fa-solid fa-location-dot"></i> Lima, Perú (Dirección de sede principal)</p>
-                <div class="social-links-large">
-                    <a href="https://www.instagram.com/lex.ursus?igsh=ZGx3OXA1bTY3Z3Jx" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=61590518050697" target="_blank" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="mailto:lex1ursus1association@gmail.com" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
+
+            <div class="contacto-split">
+                <div class="contact-form-wrapper">
+                    <h3>Envíanos un Mensaje</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nombre" placeholder="Nombre y Apellidos" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="correo" placeholder="Correo Electrónico de Contacto" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" id="mensaje" rows="6" placeholder="Escribe tu caso o los detalles específicos para la orientación jurídica requerida..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gold" style="width: 100%;">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar Formulario de Consulta
+                        </button>
+                    </form>
+                </div>
+
+                <div class="info-col">
+                    <div>
+                        <div class="info-block-item">
+                            <div class="info-block-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div class="info-block-details">
+                                <h4>Oficina Central</h4>
+                                <p>Lima, Perú</p>
+                            </div>
+                        </div>
+
+                        <div class="info-block-item">
+                            <div class="info-block-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div class="info-block-details">
+                                <h4>Canal Escrito</h4>
+                                <a href="mailto:lex1ursus1association@gmail.com">lex1ursus1association@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="info-block-item">
+                            <div class="info-block-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                            <div class="info-block-details">
+                                <h4>Atención WhatsApp</h4>
+                                <a href="https://wa.me/51900000000?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Lex%20Ursus%20y%20deseo%20solicitar%20orientaci%C3%B3n%20jur%C3%ADdica." target="_blank">+51 900 000 000</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-large-box">
+                        <h4>Canales Digitales</h4>
+                        <div class="social-row">
+                            <a href="https://www.facebook.com/profile.php?id=61590518050697" target="_blank" class="social-btn fb" title="Facebook Lex Ursus"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/lex.ursus?igsh=ZGx3OXA1bTY3Z3Jx" target="_blank" class="social-btn ig" title="Instagram Lex Ursus"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://wa.me/51900000000?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Lex%20Ursus%20y%20deseo%20solicitar%20orientaci%C3%B3n%20jur%C3%ADdica." target="_blank" class="social-btn wa" title="WhatsApp Lex Ursus"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <i class="fa-solid fa-scale-balanced"></i> LEX URSUS
+        <div class="container">
+            <div class="footer-grid">
+                <a href="#inicio" class="footer-logo">
+                    <i class="fa-solid fa-scale-balanced"></i> LEX <span>URSUS</span>
+                </a>
+                <div class="social-row">
+                    <a href="https://www.facebook.com/profile.php?id=61590518050697" target="_blank" class="social-btn fb" title="Facebook Lex Ursus"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/lex.ursus?igsh=ZGx3OXA1bTY3Z3Jx" target="_blank" class="social-btn ig" title="Instagram Lex Ursus"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://wa.me/51900000000?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Lex%20Ursus%20y%20deseo%20solicitar%20orientaci%C3%B3n%20jur%C3%ADdica." target="_blank" class="social-btn wa" title="WhatsApp Lex Ursus"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
             </div>
-            <div class="footer-social">
-                <a href="https://www.instagram.com/lex.ursus?igsh=ZGx3OXA1bTY3Z3Jx" target="_blank" class="social-icon-footer"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.facebook.com/profile.php?id=61590518050697" target="_blank" class="social-icon-footer"><i class="fa-brands fa-facebook"></i></a>
-                <a href="mailto:lex1ursus1association@gmail.com" class="social-icon-footer"><i class="fa-solid fa-envelope"></i></a>
-            </div>
-            <p class="footer-text">&copy; 2026 Lex Ursus Sociedad Jurídica S.A.C. Todos los derechos reservados.</p>
+            <p class="footer-text">&copy; 2026 Lex Ursus Sociedad Jurídica S.A.C. Todos los derechos reservados. Diseñado bajo estándares de máxima distinción y ética profesional.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Boton de WhatsApp Flotante con Pulso y Mensaje Predeterminado -->
+    <a href="https://wa.me/51900000000?text=Hola,%20vengo%20de%20la%20p%C3%A1gina%20web%20de%20Lex%20Ursus%20y%20deseo%20solicitar%20orientaci%C3%B3n%20jur%C3%ADdica." 
+       class="whatsapp-float" 
+       target="_blank" 
+       title="Chatear con un especialista jurídico en WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Efecto de scroll en la barra de navegación
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Menu móvil responsivo toggle
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            mobileMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileMenu.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Cerrar menú móvil al hacer click en algún enlace
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenu.querySelector('i');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // Control simulado del formulario de contacto
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nombre = document.getElementById('nombre').value;
+                const correo = document.getElementById('correo').value;
+                const mensaje = document.getElementById('mensaje').value;
+
+                // Crear un cuadro de notificación elegante en lugar de usar alert()
+                const notification = document.createElement('div');
+                notification.style.position = 'fixed';
+                notification.style.bottom = '20px';
+                notification.style.left = '50%';
+                notification.style.transform = 'translateX(-50%)';
+                notification.style.backgroundColor = '#c5a85c';
+                notification.style.color = '#000';
+                notification.style.padding = '16px 30px';
+                notification.style.borderRadius = '4px';
+                notification.style.fontFamily = 'var(--font-body)';
+                notification.style.fontWeight = '600';
+                notification.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+                notification.style.zIndex = '10000';
+                notification.style.textAlign = 'center';
+                notification.style.width = '90%';
+                notification.style.maxWidth = '500px';
+                notification.innerHTML = `<i class="fa-solid fa-circle-check"></i> ¡Gracias, ${nombre}! Hemos recibido tu consulta. Nos pondremos en contacto a la brevedad.`;
+
+                document.body.appendChild(notification);
+                contactForm.reset();
+
+                setTimeout(() => {
+                    notification.style.transition = 'opacity 0.5s ease';
+                    notification.style.opacity = '0';
+                    setTimeout(() => notification.remove(), 500);
+                }, 4500);
+            });
+        });
+    </script>
 </body>
 </html>
